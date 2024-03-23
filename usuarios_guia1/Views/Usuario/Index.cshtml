@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Registro de usuario";
+    IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+}
+
+<div class="container body-content">
+    <h1 class="display-4">Helpers</h1>
+
+    <hr />
+    @Html.Label("txtNombreUsuario", "Nombre Usuario:")
+    @Html.TextBox("txtNombreUsuario", "", new { @class = "form-control" })
+    @Html.Label("txtPassword", "Password:")
+    @Html.Password("txtPassword", "", new { @class = "form-control"})
+    @Html.Label("", "Género:")
+    @Html.RadioButton("Genero", "Masculino", true, new { id = "masculino" })
+    Masculino
+    @Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
+    Femenino <br />
+    @Html.Label("txtDireccion", "Dirección:")
+    @Html.TextArea("txtDireccion", "", new { @class = "form-control" })
+    <br />
+    @Html.Label("ddlCursos", "Cursos:")
+    @Html.DropDownList("ddlCurso", new SelectList(strList,
+            strList.FirstOrDefault()), "-- Seleccionar curso --")
+    <br />
+    @Html.Label("", "Pasatiempos:")
+    @Html.CheckBox("bailar")
+    @Html.Label("bailar", "Bailar")
+    @Html.CheckBox("correr")
+    @Html.Label("correr", "Correr")
+    @Html.CheckBox("escalar")
+    @Html.Label("escalar", "Escalar")
+    @Html.CheckBox("peliculas")
+    @Html.Label("peliculas", "Peliculas")
+    <br />
+    @Html.Label("lbHabilidades", "Conocimientos:")
+    @Html.ListBox("lbHabilidades", new List<SelectListItem>{
+        new SelectListItem {Text = "C #", Value = "1"},
+        new SelectListItem {Text = "ASP.NET", Value = "2"},
+        new SelectListItem {Text = "ASP.NET Core", Value = "3"},
+        new SelectListItem {Text = "Azure", Value = "4"}
+    })
+    <hr />
+    @using (Html.BeginForm("index", "Usuario", FormMethod.Post))
+    {
+        <button type="submit" value="Enviar Datos" class="btn btn-primary">Enviar Datos</button>
+    }
+    <hr />
+</div>
